@@ -25,7 +25,7 @@ const Sidebar = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://azurecloud.netlify.app/.netlify/functions/work-items?searchTerm=${searchTerm}&page=${page}&perPage=50`
+        `https://azurecloud.netlify.app/.netlify/functions/workItems?searchTerm=${searchTerm}&page=${page}&perPage=50`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch work items");
@@ -73,7 +73,7 @@ const Sidebar = () => {
   const fetchSelfLinkData = async (workItemId) => {
     try {
       const response = await fetch(
-        `https://azurecloud.netlify.app/.netlify/functions/work-items/fetch-self/${workItemId}`
+        `https://azurecloud.netlify.app/.netlify/functions/selfItems/${workItemId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data from self link");
@@ -164,7 +164,7 @@ const handleWorkItemClick = async (item) => {
   const fetchWorkItemDetails = async (workItemId) => {
     try {
       const response = await fetch(
-        `https://azurecloud.netlify.app/.netlify/functions/work-items/${workItemId}`
+        `https://azurecloud.netlify.app/.netlify/functions/workItemById/${workItemId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch work item details");
@@ -195,7 +195,7 @@ const handleWorkItemClick = async (item) => {
     const fetchAndUpdateSearchedWorkItem = async () => {
       try {
         const response = await fetch(
-          `https://azurecloud.netlify.app/.netlify/functions/work-items/${searchedWorkItem.id}`
+          `https://azurecloud.netlify.app/.netlify/functions/workItems/${searchedWorkItem.id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch work item details");
@@ -231,7 +231,7 @@ const handleWorkItemClick = async (item) => {
         storedWorkItems.map(async (item) => {
           try {
             const response = await fetch(
-              `https://azurecloud.netlify.app/.netlify/functions/work-items/${item.id}`
+              `https://azurecloud.netlify.app/.netlify/functions/workItems/${item.id}`
             );
             if (!response.ok) {
               console.warn(`Failed to fetch details for work item ${item.id}`);
