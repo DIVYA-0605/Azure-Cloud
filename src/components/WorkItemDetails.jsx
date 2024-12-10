@@ -5,7 +5,6 @@ import {
   Menu,
   IconButton,
   Paragraph,
-  Text,
   Tooltip,
 } from "@contentful/f36-components";
 import { MoreHorizontalIcon } from "@contentful/f36-icons";

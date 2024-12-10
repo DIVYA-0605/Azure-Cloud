@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Paragraph, Spinner, Stack } from "@contentful/f36-components";
+import { Spinner, Stack } from "@contentful/f36-components";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import SearchBar from "../components/SearchBar";
 import WorkItemsGrid from "../components/WorkItemsGrid";
-import Pagination from "../components/Pagination";
 import WorkItemDetails from "../components/WorkItemDetails";
 
 const Sidebar = () => {
@@ -14,9 +13,9 @@ const Sidebar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchedWorkItem, setSearchedWorkItem] = useState(null);
-  const [workItemDetailsError, setWorkItemDetailsError] = useState(null);
+  // const [workItemDetailsError, setWorkItemDetailsError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  // const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     sdk.window.startAutoResizer();
@@ -33,7 +32,7 @@ const Sidebar = () => {
       }
       const data = await response.json();
       setWorkItems(data);
-      setTotalPages(Math.ceil(data.totalCount / 50));
+      // setTotalPages(Math.ceil(data.totalCount / 50));
       setCurrentPage(page);
       setError(null);
     } catch (error) {
@@ -66,9 +65,9 @@ const Sidebar = () => {
 
 
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  // const handlePageChange = (newPage) => {
+  //   setCurrentPage(newPage);
+  // };
 
 
   const fetchSelfLinkData = async (workItemId) => {
@@ -172,10 +171,8 @@ const handleWorkItemClick = async (item) => {
       }
       const data = await response.json();
       setSearchedWorkItem(data);
-      setWorkItemDetailsError(null);
     } catch (error) {
-      setWorkItemDetailsError(error.message || "Error fetching work item details");
-    }
+      console.error("Error fetching work item details:", error.message || "Error fetching work item details");    }
   };
 
 
