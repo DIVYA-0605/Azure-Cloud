@@ -25,7 +25,7 @@ const Sidebar = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://azurecloud.netlify.app/.netlify/functions//work-items/work-items?searchTerm=${searchTerm}&page=${page}&perPage=50`
+        `https://azurecloud.netlify.app/.netlify/functions/work-items?searchTerm=${searchTerm}&page=${page}&perPage=50`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch work items");
